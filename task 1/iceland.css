@@ -1,0 +1,86 @@
+.iceland {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: red;
+  }
+  
+  .white-lt {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    background-color: white;
+  }
+  
+  .white-lb {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 96px;
+    height: 96px;
+    background-color: white;
+  }
+  
+  .white-rt {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px;
+    height: 96px;
+    background-color: white;
+  }
+  
+  .white-rb {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    height: 96px;
+    background-color: white;
+  }
+  
+  .blue-lt {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 84px;
+    height: 84px;
+    background-color: blue;
+  }
+  
+  .blue-lb {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 84px;
+    height: 84px;
+    background-color: blue;
+  }
+  
+  .blue-rt {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 168px;
+    height: 84px;
+    background-color: blue;
+  }
+  
+  .blue-rb {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 168px;
+    height: 84px;
+    background-color: blue;
+  }

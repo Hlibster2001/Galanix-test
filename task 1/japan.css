@@ -1,0 +1,17 @@
+.japan {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border: 1px solid gray;
+  }
+  
+  .red {
+    display: block;
+    border-radius: 50%;
+    background-color: red;
+    height: 125px;
+    width: 125px;
+  }
