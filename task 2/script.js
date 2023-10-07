@@ -1,9 +1,79 @@
-function amountPlusDate() {
-  const li = document.getElementsByTagName("li").length;
-  const container = document.getElementById("container");
-  const div = document.createElement("div");
-  div.className = "date";
+let images = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+const deletedImages = JSON.parse(localStorage.getItem("deletedImages")) || [];
+const list = document.getElementById("list");
+const container = document.getElementById("container");
 
+function render() {
+  list.innerHTML = " ";
+  for (let i = 0; i < images.length; i += 4) {
+    const ul = document.createElement("ul");
+
+    for (let j = i; j < i + 4 && j < images.length; j++) {
+      const imageUrl = images[j];
+      // Перевіряємо, чи зображення було видалено
+      if (!deletedImages.includes(imageUrl)) {
+        const li = document.createElement("li");
+        const image = document.createElement("img");
+        image.src = `./img/${imageUrl}.jpg`;
+        image.id = imageUrl;
+        image.className = "image";
+        const removeImg = document.createElement("span");
+        removeImg.className = "remove";
+
+        li.appendChild(image);
+        li.appendChild(removeImg);
+        ul.appendChild(li);
+      }
+    }
+
+    list.appendChild(ul);
+  }
+  amountPlusDate()
+}
+render();
+
+function removeBtn() {
+  const removeButtons = document.querySelectorAll(".remove");
+
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const listItem = event.target.parentElement;
+      const imageSrc = listItem.querySelector("img").id;
+
+      // Перевіряємо, чи вже видалено це зображення
+      const deletedImages =
+        JSON.parse(localStorage.getItem("deletedImages")) || [];
+
+      if (!deletedImages.includes(imageSrc)) {
+        // Якщо зображення ще не було видалено, то видаляємо його і зберігаємо інформацію про видалення
+        deletedImages.push(imageSrc);
+        localStorage.setItem("deletedImages", JSON.stringify(deletedImages));
+
+        listItem.remove();
+        document.querySelector(".date").innerHTML = "";
+        amountPlusDate();
+      }
+    });
+  });
+}
+removeBtn();
+
+function restoreBtn() {
+  const restoreButton = document.createElement("button");
+  restoreButton.textContent = "Відновити";
+  container.appendChild(restoreButton);
+
+  restoreButton.addEventListener("click", () => {
+    localStorage.removeItem("deletedImages");
+    render();
+  });
+}
+restoreBtn();
+
+function amountPlusDate() {
+  const div = document.querySelector(".date");
+  div.innerHTML = " ";
+  const li = document.getElementsByTagName("li").length;
   const imgAmout = document.createElement("p");
   const text = `На сторінці ${li} зображень`;
   imgAmout.innerHTML = text;
@@ -36,7 +106,6 @@ function amountPlusDate() {
 
   container.insertBefore(div, container.firstChild);
 }
-
 amountPlusDate();
 
 function popup() {
@@ -57,5 +126,4 @@ function popup() {
     modal.style.display = "none";
   });
 }
-
 popup();
